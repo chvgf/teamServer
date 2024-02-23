@@ -115,16 +115,32 @@ router.patch("/editMatchPost/:id", async (req, res) => {
 });
 
 // 랜덤매칭
-router.post("/RandomMatching", async (req, res) => {
+router.get("/RandomMatching", async (req, res) => {
+  console.log(req.user);
   try {
-    // console.log(req.user);
+    const test = await db.collection("matching").findOne({ "id.grade": req.user?.grade });
+    console.log(test);
+    res.json({
+      flag: true,
+      message: "랜덤매칭 찾기",
+    });
   } catch (error) {
     console.error(error);
   }
-  // const userGrade = req.user.grade;
-  // const rnadomFilter = await db.collection("matching").findOne({ "id.grade": userGrade });
-  // console.log(rnadomFilter);
-  // res.send("저장성공");
+});
+
+router.post("/RandomMatching", async (req, res) => {
+  console.log(req.user);
+  console.log(req.body);
+  try {
+    await db.collection("matching").findOne({ grade: req.user?.grade });
+    res.json({
+      flag: true,
+      message: "랜덤매칭 찾기",
+    });
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 module.exports = router;
