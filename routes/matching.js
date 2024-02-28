@@ -118,9 +118,10 @@ router.patch("/editMatchPost/:id", async (req, res) => {
 router.get("/RandomMatching", async (req, res) => {
   console.log(req.user);
   try {
-    const test = await db.collection("matching").findOne({ "id.grade": req.user?.grade });
+    const test = await db.collection("matching").find({ "id.grade": req.user?.grade }).toArray();
     console.log(test);
     res.json({
+      data: test,
       flag: true,
       message: "랜덤매칭 찾기",
     });
@@ -130,11 +131,10 @@ router.get("/RandomMatching", async (req, res) => {
 });
 
 router.post("/RandomMatching", async (req, res) => {
-  console.log(req.user);
-  console.log(req.body);
   try {
-    await db.collection("matching").findOne({ grade: req.user?.grade });
+    const test = await db.collection("matching").find({ "id.grade": req.user?.grade }).toArray();
     res.json({
+      data: test,
       flag: true,
       message: "랜덤매칭 찾기",
     });
