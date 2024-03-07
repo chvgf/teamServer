@@ -22,7 +22,7 @@ const clubRouter = require("./routes/club");
 const clubInsertRouter = require("./routes/clubInsert");
 
 const app = express();
-app.set("port", 8888 || 3002);
+app.set("port", process.env.PORT || 3002);
 passportConfig();
 connect();
 
