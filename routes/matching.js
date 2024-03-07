@@ -116,7 +116,6 @@ router.patch("/editMatchPost/:id", async (req, res) => {
 
 // 랜덤매칭
 router.get("/RandomMatching", async (req, res) => {
-  console.log(req.user);
   try {
     const test = await db.collection("matching").find({ "id.grade": req.user?.grade }).toArray();
     console.log(test);
