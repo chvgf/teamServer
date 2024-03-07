@@ -28,7 +28,7 @@ connect();
 
 app.use(
   cors({
-    origin: ["https://minton1000.netlify.app", "http://localhost:3000"],
+    origin: ["https://goniminton-jw.netlify.app/", "http://localhost:3000"],
     credentials: true,
   })
 );
