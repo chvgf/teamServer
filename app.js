@@ -44,7 +44,7 @@ app.use(
     saveUninitialized: false,
     secret: process.env.COOKIE_SECRET,
     cookie: {
-      httpOnly: false,
+      httpOnly: true,
       secure: false,
     },
     name: "session-cookie",
