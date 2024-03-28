@@ -45,8 +45,8 @@ app.use(
     secret: process.env.COOKIE_SECRET,
     cookie: {
       httpOnly: true,
-      secure: false,
-      sameSite: "https",
+      secure: true,
+      sameSite: "none",
     },
     name: "session-cookie",
   })
